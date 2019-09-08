@@ -8,18 +8,23 @@ public class Puffancs extends Noveny {
         this.nev = nev;
         this.tapanyagMennyiseg = tapanyagMennyiseg;
         if (tapanyagMennyiseg <= 0) {
-            elo = false;
+            bolygo.addHalottNoveny(this);
         }
     }
 
     @Override
-    int tapanyagfelvetel() {
-        return 0;
+    void tapanyagValtozas(Sugarzas s) {
+        if (s == Sugarzas.NONE) {
+            tapanyagMennyiseg -= 1;
+        } else if (s == Sugarzas.ALFA) {
+            tapanyagMennyiseg += 2;
+        } else if (s == Sugarzas.DELTA) {
+            tapanyagMennyiseg -= 2;
+        }
+        if (tapanyagMennyiseg > 10 || tapanyagMennyiseg <= 0) {
+            bolygo.addHalottNoveny(this);
+        } else {
+            influenceNextDayAlfaSugarzas(10 - tapanyagMennyiseg);
+        }
     }
-
-    @Override
-    void setSugarzasAlfa() {}
-
-    @Override
-    void setSugarzasDelta() {}
 }

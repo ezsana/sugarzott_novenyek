@@ -7,16 +7,20 @@ public class Parabokor extends Noveny {
     Parabokor(String nev, int tapanyagMennyiseg) {
         this.nev = nev;
         this.tapanyagMennyiseg = tapanyagMennyiseg;
+        if (tapanyagMennyiseg <= 0) {
+            bolygo.addHalottNoveny(this);
+        }
     }
 
     @Override
-    int tapanyagfelvetel() {
-        return 0;
+    void tapanyagValtozas(Sugarzas s) {
+        if (s == Sugarzas.NONE) {
+            tapanyagMennyiseg -= 1;
+        } else if (s == Sugarzas.ALFA || s == Sugarzas.DELTA) {
+            tapanyagMennyiseg += 1;
+        }
+        if (tapanyagMennyiseg <= 0) {
+            bolygo.addHalottNoveny(this);
+        }
     }
-
-    @Override
-    void setSugarzasAlfa() {}
-
-    @Override
-    void setSugarzasDelta() {}
 }

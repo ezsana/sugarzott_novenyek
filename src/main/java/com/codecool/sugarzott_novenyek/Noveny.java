@@ -4,14 +4,17 @@ public abstract class Noveny {
 
     String nev;
     int tapanyagMennyiseg;
-    boolean elo = true;
-    Bolygo bolygo = new Bolygo();
+    Bolygo bolygo = Bolygo.getInstance();
 
-    abstract int tapanyagfelvetel();
+    abstract void tapanyagValtozas(Sugarzas s);
 
-    abstract void setSugarzasAlfa();
+    void influenceNextDayAlfaSugarzas(int alfaEgyseg) {
+        bolygo.changeAlfaSugarzasIgeny(alfaEgyseg);
+    }
 
-    abstract void setSugarzasDelta();
+    void influenceNextDayDeltaSugarzas(int deltaEgyseg) {
+        bolygo.changeDeltaSugarzasIgeny(deltaEgyseg);
+    }
 
     public String getNev() {
         return nev;
@@ -21,25 +24,16 @@ public abstract class Noveny {
         this.nev = nev;
     }
 
-    public boolean getElo() {
-        return this.elo;
-    }
-
-
     public int getTapanyagMennyiseg() {
-        if (tapanyagMennyiseg <= 0) {
-            elo = false;
-        }
         return this.tapanyagMennyiseg;
     }
 
     public void setTapanyagMennyiseg(int tapanyagMennyiseg) {
-        if (tapanyagMennyiseg < 0) {
-            elo = false;
-        }
         this.tapanyagMennyiseg = tapanyagMennyiseg;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "A növény neve: " + this.getNev() + ", tápanyaga: " + this.getTapanyagMennyiseg() + " egység.";
+    }
 }
