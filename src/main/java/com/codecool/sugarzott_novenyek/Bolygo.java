@@ -65,7 +65,7 @@ public class Bolygo {
         for (int i = 0; i < days; i++) {
             Sugarzas s = getNapiSugarzas();
             halottNovenyek.clear();
-            System.out.println("A mai nap sugárzása: " + s.toString() + ", mert alfa=" + sugarzasAlfaIgeny + ", delta=" + sugarzasDeltaIgeny + ".");
+            System.out.println("A(z)" + (i+1) + ". nap sugárzása: " + s.toString() + ", mert alfa=" + sugarzasAlfaIgeny + ", delta=" + sugarzasDeltaIgeny + ".");
             for (Noveny n : novenyek) {
                 System.out.println(n.toString());
                 n.tapanyagValtozas(s);
@@ -74,7 +74,7 @@ public class Bolygo {
                 System.out.println(hn + " Ezért sajnos elpusztult.");
             }
             novenyek.removeAll(halottNovenyek);
-            System.out.println("A nap véget ért.");
+            System.out.println("A(z) " + (i+1) + ". nap véget ért.");
         }
     }
 

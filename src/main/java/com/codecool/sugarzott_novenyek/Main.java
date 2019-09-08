@@ -8,12 +8,12 @@ public class Main {
 
     public static void main(String[] args) {
         Bolygo bolygo = Bolygo.getInstance();
-        bolygo.setdays(5);
+        bolygo.setdays(100);
         for ( int i = 0; i < puffancsSzam; i++) {
-            bolygo.addNoveny(new Puffancs("Pufi#"+i, 3+i));
+            bolygo.addNoveny(new Puffancs("Pufi#"+i, 9+i));
         }
         for ( int i = 0; i < deltafaSzam; i++) {
-            bolygo.addNoveny(new Deltafa("Delta#"+i, 7+i));
+            bolygo.addNoveny(new Deltafa("Delta#"+i, 3+i));
         }
         for ( int i = 0; i < parabokorSzam; i++) {
             bolygo.addNoveny(new Parabokor("Pari#"+i, 1+i));
